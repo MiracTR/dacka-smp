@@ -1,51 +1,59 @@
 const serverIP = "play-dackasmp.dev.tc";
 
-// IP Kopyalama
+const btn1 = document.getElementById("copyBtn");
+const btn2 = document.getElementById("copyBtn2");
+
 function copyIP() {
+if (navigator.clipboard && window.isSecureContext) {
 navigator.clipboard.writeText(serverIP);
+} else {
+const textarea = document.createElement("textarea");
+textarea.value = serverIP;
+document.body.appendChild(textarea);
+textarea.select();
+document.execCommand("copy");
+textarea.remove();
+}
 
 ```
-const btns = document.querySelectorAll("button");
-btns.forEach(btn => {
-    if (btn.innerText.includes("Kopyala")) {
-        btn.innerText = "Kopyalandı!";
-        setTimeout(() => {
-            btn.innerText = "Kopyala";
-        }, 2000);
-    }
-});
+btn1.innerText = "Kopyalandı!";
+btn2.innerText = "Kopyalandı!";
+
+setTimeout(() => {
+    btn1.innerText = "Kopyala";
+    btn2.innerText = "IP'yi Kopyala";
+}, 2000);
 ```
 
 }
 
-// Sunucu durumu çekme (API)
-async function fetchServerStatus() {
+// Butonlara event bağla
+btn1.addEventListener("click", copyIP);
+btn2.addEventListener("click", copyIP);
+
+// Sunucu durumu
+async function fetchStatus() {
 try {
 const res = await fetch(`https://api.mcsrvstat.us/2/${serverIP}`);
 const data = await res.json();
 
 ```
-    const statusText = document.getElementById("status-text");
-    const dot = document.querySelector(".dot");
+    const text = document.getElementById("status-text");
+    const dot = document.getElementById("status-dot");
 
     if (data.online) {
-        statusText.innerText = `Online • ${data.players.online}/${data.players.max} oyuncu`;
+        text.innerText = `Online • ${data.players.online}/${data.players.max}`;
         dot.style.background = "lime";
-        dot.style.boxShadow = "0 0 10px lime";
     } else {
-        statusText.innerText = "Offline";
+        text.innerText = "Offline";
         dot.style.background = "red";
-        dot.style.boxShadow = "0 0 10px red";
     }
-} catch (err) {
-    document.getElementById("status-text").innerText = "Durum alınamadı";
+} catch {
+    document.getElementById("status-text").innerText = "Hata oluştu";
 }
 ```
 
 }
 
-// Sayfa yüklenince çalıştır
-fetchServerStatus();
-
-// Her 30 saniyede güncelle
-setInterval(fetchServerStatus, 30000);
+fetchStatus();
+setInterval(fetchStatus, 30000);
