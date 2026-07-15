@@ -9,10 +9,8 @@
 </head>
 <body>
 
-<!-- Arka plan -->
 <div class="background"></div>
 
-<!-- Navbar -->
 <header>
     <h1>DackaSMP</h1>
     <nav>
@@ -22,47 +20,58 @@
     </nav>
 </header>
 
-<!-- Hero -->
 <section id="home" class="hero">
     <h2>Darüşşafaka'nın İlk ve Tek Genel Minecraft SMP Sunucusu</h2>
     <p>Macera, PvP ve eğlence seni bekliyor!</p>
 
-    <div class="server-box">
-        <span id="server-ip">play-dackasmp.dev.tc</span>
-        <button onclick="copyIP()">Kopyala</button>
-    </div>
+```
+<div class="server-box">
+    <span id="server-ip">play-dackasmp.dev.tc</span>
+    <button id="copyBtn">Kopyala</button>
+</div>
 
-    <div class="status">
-        <span class="dot"></span>
-        <span id="status-text">Sunucu durumu yükleniyor...</span>
-    </div>
+<div class="status">
+    <span class="dot" id="status-dot"></span>
+    <span id="status-text">Yükleniyor...</span>
+</div>
+```
+
 </section>
 
-<!-- Özellikler -->
 <section id="features" class="features">
     <h2>Özellikler</h2>
 
-    <div class="cards">
-        <div class="card">
-            <h3>⚔️ PvP Sistemi</h3>
-            <p>Sunucu İçi PvP atabilirsiniz.</p>
-        </div>
+```
+<div class="cards">
+    <div class="card">
+        <h3>⚔️ PvP Sistemi</h3>
+        <p>Sunucu içi PvP yap.</p>
+    </div>
 
-        <div class="card">
-            <h3>🌍 Survival</h3>
-            <p>Arkadaşlarınla base kur ve diğerlerininkini yağmala.</p>
-        </div>
+    <div class="card">
+        <h3>🌍 Survival</h3>
+        <p>Arkadaşlarınla base kur ve yağmala.</p>
+    </div>
+
+    <div class="card">
+        <h3>💎 Eventler</h3>
+        <p>Ödüllü etkinlikler.</p>
+    </div>
+</div>
+```
+
 </section>
 
-<!-- Katıl -->
 <section id="join" class="join">
     <h2>Sunucuya Katıl</h2>
     <p>IP adresini kopyala ve hemen oyuna gir!</p>
 
-    <button class="big-btn" onclick="copyIP()">IP'yi Kopyala</button>
+```
+<button class="big-btn" id="copyBtn2">IP'yi Kopyala</button>
+```
+
 </section>
 
-<!-- Footer -->
 <footer>
     <p>
         🏆 Medal üzerinden <strong>dackasmp.aternos.me</strong> adresine destek atan oyuncular
@@ -71,7 +80,6 @@
 </footer>
 
 <script src="script.js"></script>
-```
 
 </body>
 </html>
