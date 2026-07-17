@@ -1,4 +1,4 @@
-const serverIP = "play-dackasmp.dev.tc";
+const serverIP = "dackasmp.vexr.dev";
 
 const btn1 = document.getElementById("copyBtn");
 const btn2 = document.getElementById("copyBtn2");
